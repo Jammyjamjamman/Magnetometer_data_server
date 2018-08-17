@@ -1,0 +1,6 @@
+{
+    "observatory": "ESK",
+    "channels": ["X", "Y", "Z", "F"],
+    "interval": "hourly",
+    "dat_type": "definitive"
+}

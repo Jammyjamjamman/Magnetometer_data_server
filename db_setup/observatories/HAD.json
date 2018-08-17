@@ -1,0 +1,6 @@
+{
+    "observatory": "HAD",
+    "channels": ["X", "Y", "Z", "F"],
+    "interval": "minute",
+    "dat_type": "variation"
+}

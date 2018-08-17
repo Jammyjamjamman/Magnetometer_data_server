@@ -1,0 +1,6 @@
+# List of observatories to collect data from.
+# Currently only British observatories are listed.
+# Data is retrieved from the USGS data collection: cwbpub.cr.usgs.gov
+
+HAD
+ESK
