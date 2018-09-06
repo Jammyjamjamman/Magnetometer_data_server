@@ -1,0 +1,1 @@
+Mount/ copy the magnetometer data into this directory.
