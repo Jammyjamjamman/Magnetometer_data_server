@@ -3,5 +3,6 @@ db_data/db/*
 mag_data/*
 mag_data_copy/
 mag_data_exploration/csvs/*
-
+*access.crypt
+*.run.ipynb
 !*.include_dir.txt
