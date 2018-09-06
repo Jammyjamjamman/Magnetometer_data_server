@@ -111,7 +111,7 @@ db.createRole(
 ```
 
 
-4. ### Create users.
+### 4. Create users.
 
 These are the users who will interact directly with the database. It is recommended to keep the usernames the same, as these are known users by other python scripts. However, the passwords should be changed.
 Create the user that manages observatories:
@@ -181,11 +181,13 @@ db.createUser(
 ** Note: The Administrator account and the Readwriter account should only be known by a few people and not accessible to the server, sensors or anything else. **
 
 
-### 4. Create indexes (use Datreader/Readwriter account). Since we are dealing with timeseries data, the data needs to be accessible and sorted based on time. Therefore, index time in the raw sensor.
+### 5. Create indexes (use Datreader/Readwriter account). Since we are dealing with timeseries data, the data needs to be accessible and sorted based on time. Therefore, index time in the raw sensor.
 
 ```
 db.sensorDat.createIndex({ "time": 1 })
 db.magnetDat.createIndex({ "time": 1 })
 ```
 
-5. ### Setup the relevant python scripts with database usernames and passwords. Open the Jupyter notebook [Encrypt_DB_Passwords](file://Encrypt_DB_passwords.ipynb) to encrypt the passwords (this needs to be done in a jupyter environment, in a web broswer. See [Installing Jupyter Notebooks]().)
+### 6. Setup the relevant python scripts with database usernames and passwords.
+
+Open the Jupyter notebook [Encrypt_DB_Passwords](file://Encrypt_DB_passwords.ipynb) to encrypt the passwords (this needs to be done in a jupyter environment, in a web browser. See [Installing Jupyter Notebooks](https://jupyter.readthedocs.io/en/latest/projects/content-projects.html).)

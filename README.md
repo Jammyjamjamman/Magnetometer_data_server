@@ -9,6 +9,7 @@ This code is part of my Masters Project at Aberystwyth University.
 * Python (Anaconda Python 3 Recommended)
 * numpy
 * scipy
+* scikit-learn
 * pandas
 * jupyter
 * matplotlib
