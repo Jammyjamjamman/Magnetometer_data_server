@@ -113,7 +113,7 @@ db.createRole(
 
 ### 4. Create users.
 
-These are the users who will interact directly with the database. It is recommended to keep the usernames the same, as these are known users by other python scripts. However, the passwords should be changed.
+These are the users who will interact directly with the database. The chosen usernames and passwords will need setting in various python scripts (this is covered later). The passwords should be changed from these defaults.
 Create the user that manages observatories:
 
 ```
@@ -188,6 +188,20 @@ db.sensorDat.createIndex({ "time": 1 })
 db.magnetDat.createIndex({ "time": 1 })
 ```
 
+
 ### 6. Setup the relevant python scripts with database usernames and passwords.
 
-Open the Jupyter notebook [Encrypt_DB_Passwords](file://Encrypt_DB_passwords.ipynb) to encrypt the passwords (this needs to be done in a jupyter environment, in a web browser. See [Installing Jupyter Notebooks](https://jupyter.readthedocs.io/en/latest/projects/content-projects.html).)
+Now that the key and a file called `access.crypt` has been generated, these need to be shared with other components of the server:
+* A copy of `access.crypt` is needed in `/path/to/Magnetometer_data_server/db_updater` and the key needs to be supplied in the script `/path/to/Magnetometer_data_server/db_updater/new_sensor.py` as the global variable `KEY`.
+
+* The password for the `Datreader` user needs to be set in the script `/path/to/Magnetometer_data_server/server/mongo_cursors.py` as the global variable `READ_PASS`.
+
+Open the Jupyter notebook [Encrypt_DB_Passwords](Encrypt_DB_Passwords.ipynb) and follow the instructions to store the passwords of users who can write to the mongo database, in a file called `access.crypt`. Or, alternatively, use the python script `encrypt_passwords.py` to create the file. In `encrypt_passwords.py`, make sure to set the variable `password_dict` to contain your passwords and key to set the `key`.
+
+After generating `access.crypt`:
+
+* A copy of `access.crypt` needs saving in `/path/to/Magnetometer_data_server/db_updater` and the key needs to be supplied in the script `/path/to/Magnetometer_data_server/db_updater/mongo_cursors.py` as the global variable `KEY`.
+
+* The usernames for the observatories data manager, the raw data writer and the magnetometer data writer need setting in `/path/to/Magnetometer_data_server/db_updater/mongo_cursors.py` as the global variables `OBSW_USR`, `SENW_USR` and `MAGW_USR` respectively.
+
+* The username password for the database reader user needs to be set in the script `/path/to/Magnetometer_data_server/server/mongo_cursors.py` as the global variables `READ_USR` and `READ_PASS` respectively. 
