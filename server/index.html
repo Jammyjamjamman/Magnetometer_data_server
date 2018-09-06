@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lan="en">
+    <head>
+        <title>Aberystwyth Magnetometer Server</title>
+        <meta content="text/html" charset="utf-8">
+        <style></style>
+    </head>
+    
+    
+    <body>
+        
+        <fieldset name="dat_select_form" onchange="updateURI()">
+            <legend>Select the data you want</legend>
+            <h3>Select an observatory</h3>
+            <select id="sensor_selection" onchange="sensor_select(this.value)">
+            </select>
+            <h4>Sensor details</h4>
+            <div id="sensor_info"></div>
+            <h3>Choose time limits</h3>
+            Start date: <input type="date" id="startdate" onchange="get_start()"> Start time: <input type="time" id="starttime" onchange="get_start()"><br><br>
+            End date: <input type="date" id="enddate" onchange="get_end()"> End time: <input type="time" id="endtime" onchange="get_end()"><br>
+            
+            <h4 id="warnings"></h4>
+            <p id="uri_link"></p>
+        </fieldset>
+        
+        <script src="create_uri.js">
+        </script>
+        
+    </body>
+</html>

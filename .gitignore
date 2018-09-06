@@ -1,0 +1,4 @@
+# Ignore contents of directories containing data.
+db_data/db/*
+mag_data/
+mag_data_copy/*
