@@ -181,7 +181,8 @@ db.createUser(
 ** Note: The Administrator account and the Readwriter account should only be known by a few people and not accessible to the server, sensors or anything else. **
 
 
-### 5. Create indexes (use Datreader/Readwriter account). Since we are dealing with timeseries data, the data needs to be accessible and sorted based on time. Therefore, index time in the raw sensor.
+### 5. Create indexes (use Datreader/Readwriter account).
+Since we are dealing with timeseries data, the data needs to be accessible and sorted based on time. Therefore, index time in the raw sensor.
 
 ```
 db.sensorDat.createIndex({ "time": 1 })
@@ -202,6 +203,6 @@ After generating `access.crypt`:
 
 * A copy of `access.crypt` needs saving in `/path/to/Magnetometer_data_server/db_updater` and the key needs to be supplied in the script `/path/to/Magnetometer_data_server/db_updater/mongo_cursors.py` as the global variable `KEY`.
 
-* The usernames for the observatories data manager, the raw data writer and the magnetometer data writer need setting in `/path/to/Magnetometer_data_server/db_updater/mongo_cursors.py` as the global variables `OBSW_USR`, `SENW_USR` and `MAGW_USR` respectively.
+* The usernames for the observatories data manager, the raw data writer and the magnetometer data writer need setting in `/path/to/Magnetometer_data_server/db_updater/mongo_cursors.py` as the global variables `OBSW_USR`, `SENW_USR` and `MAGW_USR` respectively. The database web location needs setting, as the global variable `DB_HOST`. `DB_HOST` is set to "localhost" by default, which is fine if the database is on the same machine.
 
-* The username password for the database reader user needs to be set in the script `/path/to/Magnetometer_data_server/server/mongo_cursors.py` as the global variables `READ_USR` and `READ_PASS` respectively. 
+* The username password for the database reader user needs to be set in the script `/path/to/Magnetometer_data_server/server/mongo_cursors.py` as the global variables `READ_USR` and `READ_PASS` respectively. The database web location needs setting, as the global variable `DB_HOST`. `DB_HOST` is set to "localhost" by default, which is fine if the database is on the same machine.
