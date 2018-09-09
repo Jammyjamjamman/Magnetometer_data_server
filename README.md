@@ -17,7 +17,7 @@ This code is part of my Masters Project at Aberystwyth University.
 
 ### Raw Data Processing
 * PyChange
-* igrf12
+* [igrf12](https://github.com/scivision/igrf12)
 
 ### Setting up the Database or inserting into Database
 * pymongo

@@ -1,1 +1,0 @@
-This directory can be used as the location for storing database data. 

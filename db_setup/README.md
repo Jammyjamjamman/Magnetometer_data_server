@@ -197,7 +197,7 @@ Now that the key and a file called `access.crypt` has been generated, these need
 
 * The password for the `Datreader` user needs to be set in the script `/path/to/Magnetometer_data_server/server/mongo_cursors.py` as the global variable `READ_PASS`.
 
-Open the Jupyter notebook [Encrypt_DB_Passwords](Encrypt_DB_Passwords.ipynb) and follow the instructions to store the passwords of users who can write to the mongo database, in a file called `access.crypt`. Or, alternatively, use the python script `encrypt_passwords.py` to create the file. In `encrypt_passwords.py`, make sure to set the variable `password_dict` to contain your passwords and key to set the `key`.
+Open the Jupyter notebook [Encrypt_DB_Passwords](Encrypt_DB_Passwords.ipynb) and follow the instructions to store the passwords of users who can write to the mongo database, in a file called `access.crypt`. Or, alternatively, use the python script [encrypt_passwords.py](encrypt_passwords.py) to create the file. In `encrypt_passwords.py`, make sure to set the variable `password_dict` to contain your passwords and key to set the `key`.
 
 After generating `access.crypt`:
 
