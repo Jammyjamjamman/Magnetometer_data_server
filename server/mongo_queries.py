@@ -32,4 +32,5 @@ def get_raw_dat(sensor_id, starttime=None, endtime=None):
 def get_mag_dat(sensor_id, starttime=None, endtime=None):
     read_cursor = mongo_cursors.get_read_cursor()
     conditions = get_conditions(sensor_id, starttime, endtime)
+    print(conditions)
     return read_cursor.magnetDat.find(conditions, {"_id": 0}).sort([("time", 1)])

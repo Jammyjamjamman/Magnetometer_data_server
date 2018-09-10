@@ -8,4 +8,5 @@ mag_data_exploration/csvs/*
 *frg_single_fgm_input_script.py
 *HAD_input_script.py
 **/__pycache__/
+**/.ipynb_checkpoints/
 !*.include_dir.txt

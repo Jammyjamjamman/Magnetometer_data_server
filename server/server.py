@@ -6,9 +6,10 @@ Created on Tue Aug 21 12:22:21 2018
 @author: james
 """
 
-from flask import Flask, Response, send_file, request, jsonify
+from flask import Flask, request, jsonify, Response
 from flask_cors import CORS
 import mongo_queries
+from datetime import datetime
 
 app = Flask(__name__)
 cors = CORS(app, resources="/available-sensors")
@@ -37,20 +38,9 @@ def handle_invalid_usage(error):
 
 
 @app.route('/')
-def download_button():
-    download_html = """<!DOCTYPE html>
-                        <html>
-                        <body>
-                        
-                        <p>Click on the w3schools logo to download the image:<p>
-                        
-                        <a href="/download_test" download>Download now!</a>
-                        
-                        <p><b>Note:</b> The download attribute is not supported in Edge version 12, IE, Safari 10 (and earlier), or Opera version 12 (and earlier).</p>
-                        
-                        </body>
-                        </html>"""
-    return download_html
+def root():
+    with open("index.html", 'r') as homepage:
+        return homepage
 
 
 @app.route("/available-sensors")
@@ -58,24 +48,47 @@ def available_sensors():
     return jsonify(list(mongo_queries.get_available_sensors()))
 
 
-@app.route("/download-test")
-def download_stream():
+def listdict_csv_iter(dict_list):
+    """Convert a list of dicts to a csv, as an iterator."""
+    for dat in dict_list:
+        try:
+            yield csv_row_fmt.format(**dat)
+        except NameError:
+            yield ",".join(dat.keys()) + '\n'
+            csv_row_fmt = "{" + "},{".join(dat.keys()) + "}\n"
+            yield csv_row_fmt.format(**dat)
+
+
+@app.route("/mag-dat")
+def download_mag_dat():
+    # The request is invalid if a user does not provide a sensor ID.
+    sensor_id = request.args.get("sensor_id")
+    if sensor_id is None:
+        raise InvalidUsage("Sensor ID not provided!", status_code=400)
+    try:
+        starttime = datetime.fromtimestamp(int(request.args.get("starttime")))
+    except TypeError:
+        starttime = None
+    try:
+        endtime = datetime.fromtimestamp(int(request.args.get("endtime")))
+    except TypeError:
+        endtime = None
+        
+    dat = mongo_queries.get_mag_dat(sensor_id, starttime, endtime)
+    return Response(dat, mimetype='text/csv')
+#    
+#    with open("download_test.zip", "rb") as dl_file:
+#        return send_file(io.BytesIO(dl_file.read()), mimetype="application/zip")
+
+@app.route("/raw-dat")
+def download_raw_dat():
+    # The request is invalid if a user does not provide a sensor ID.
     sensor_id = request.args.get("sensor_id")
     if sensor_id is None:
         raise InvalidUsage("Sensor ID not provided!", status_code=400)
     starttime = request.args.get("starttime")
     endtime = request.args.get("endtime")
     return (str(sensor_id) + starttime + str(endtime))
-#    def return_csv():
-#        fieldnames = ["time", "reading", "temperature"]
-#        yield ",".join(fieldnames) + '\n'
-#        
-#        for dat in query_mag.get_all_frg_dat():
-#            yield "{time},{reading},{temperature}\n".format(**dat)
-#    
-#    with open("download_test.zip", "rb") as dl_file:
-#        return send_file(io.BytesIO(dl_file.read()), mimetype="application/zip")
-
 
 if __name__ == "__main__":
     app.run(debug=True)

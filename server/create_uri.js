@@ -1,4 +1,5 @@
-var magDatURL = "http://localhost:5000/download-test";
+var rawDatURL = "http://localhost:5000/raw-dat";
+var magDatURL = "http://localhost:5000/mag-dat";
 var sensors = {};
 var mintime = null;
 var maxtime = null;
@@ -35,12 +36,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 
 function updateURI() {
-    downloadURI = magDatURL + "?sensor_id=" + sensor_selection.value;
-    if (mintime != null) {
-        downloadURI += "&starttime=" + mintime.getTime();
+    if (raw.checked) {
+        downloadURI = rawDatURL;
     }
+    else {
+        downloadURI = magDatURL;
+    }
+    
+    downloadURI += "?sensor_id=" + sensor_selection.value;
+    
+    if (mintime != null) {
+        downloadURI += "&starttime=" + mintime.getTime()/1000;
+    }
+    
     if (maxtime != null) {
-        downloadURI += "&endtime=" + maxtime.getTime();
+        downloadURI += "&endtime=" + maxtime.getTime()/1000;
     }
     
     uri_link.innerHTML = "<a href=" + downloadURI + ">" + '<button type="button">download</button><br><br>'
