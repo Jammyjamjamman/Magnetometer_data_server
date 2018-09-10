@@ -7,5 +7,5 @@ mag_data_exploration/csvs/*
 *.run.ipynb
 *frg_single_fgm_input_script.py
 *HAD_input_script.py
-*/__pycache__/
+**/__pycache__/
 !*.include_dir.txt
