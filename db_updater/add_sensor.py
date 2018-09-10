@@ -33,7 +33,9 @@ def add_sensor(sensor_id, latitude, longitude, elevation, coord_sys, **kwargs):
     sensor_info = {**sensor_info, **kwargs}
     
     mongo_queries.insert_sensor(sensor_info)
+    print("Successfully added sensor to database!")
     generate_mongoconn_script(sensor_info["_id"])
+    print("Successfully generated script for inserting sensor readings for "+sensor_id+"!")
 
 
 def generate_mongoconn_script(sensor_id):

@@ -22,7 +22,7 @@ MAGW_USR = "Magnetwriter"
 DB_HOST = "localhost"
 
 
-def get_passwords(key, pass_loc):
+def get_passwords(key=KEY, pass_loc=PASS_LOC):
     f = Fernet(key)
     with open(pass_loc, 'rb') as cr_file:
         return json.loads(f.decrypt(cr_file.read()).decode("utf-8"))

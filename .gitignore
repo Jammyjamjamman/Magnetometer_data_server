@@ -5,4 +5,6 @@ mag_data_copy/
 mag_data_exploration/csvs/*
 *access.crypt
 *.run.ipynb
+*frg_single_fgm_input_script.py
+*HAD_input_script.py
 !*.include_dir.txt

@@ -1,6 +1,5 @@
 var magDatURL = "http://localhost:5000/download-test";
 var sensors = {};
-var sensor_id;
 var mintime = null;
 var maxtime = null;
 
@@ -17,16 +16,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
                                                                     delete sensor._id
                                                                     map[id] = sensor;
                                                                     return map; }, {});
-            
             Object.keys(sensors).forEach(function(key,index) {
-                                                        sensor_id = key;
                                                         sensor_select_txt += '<option value=' + key + "><b>" + sensors[key].name + "</b><br>";
-                                                        sensor_select(key)
-                                                    });     
+                                                    }); 
+
             sensor_selection.innerHTML = sensor_select_txt;
-            get_start()
-            get_end()
-            updateURI()
+            sensor_selection.value = Object.keys(sensors)[0]
+            sensor_select(sensor_selection.value);
+            get_start();
+            get_end();
+            updateURI();
         }
     };
 
@@ -36,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 
 function updateURI() {
-    downloadURI = magDatURL + "?sensor_id=" + sensor_id;
+    downloadURI = magDatURL + "?sensor_id=" + sensor_selection.value;
     if (mintime != null) {
         downloadURI += "&starttime=" + mintime.getTime();
     }

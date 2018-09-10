@@ -42,7 +42,7 @@ exit
 After creating the admin account and disconnecting, restart the database and enable authentication:
 
 ```
-mongod --auth --dbpath /path/to/db_data/db/ --shutdown
+mongod --dbpath /path/to/db_data/db/ --shutdown
 
 mongod --auth --dbpath /path/to/Magnetometer_data_server/db_data/db/
 ```

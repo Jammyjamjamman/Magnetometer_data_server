@@ -37,4 +37,4 @@ def get_mag_dat(sensor_id, starttime=None, endtime=None):
 
 def insert_sensor(sensor_dat_dict):
     obs_writer = mongo_cursors.get_obs_writer()
-    obs_writer.insert(sensor_dat_dict)
+    obs_writer.insert_one(sensor_dat_dict)
