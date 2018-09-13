@@ -20,3 +20,5 @@ to:
 if __name__ == "__main__":
     app.run(debug=False)
 ```
+
+The default homepage for the server is `index.html`, in the same directory as the script. The URL of the server needs setting in the javascript of `index.html`. By default, it is set to `var URL = http://localhost:5000`. This URL is where the webpage retrieves magnetometer data from.
