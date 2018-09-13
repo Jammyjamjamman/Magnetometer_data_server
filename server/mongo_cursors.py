@@ -19,6 +19,11 @@ READ_PASS = "readpassword"
 def get_read_cursor(usr=READ_USR,
                     password=READ_PASS,
                     db_host=DB_HOST):
+    """Returns a cursor for reading the mongo database.
+    
+    Returns:
+        cursor: A cursor for reading the magnetometer database.
+    """
     return MongoClient(db_host,
                        username=usr,
                        password=password,

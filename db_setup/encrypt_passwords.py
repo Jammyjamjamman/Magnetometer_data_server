@@ -22,7 +22,13 @@ DB_HOST = "localhost"
 
 def encrypt_password_dict(passwords, key, crypt_file = "access.crypt"):
     """
-    Encrypt a dictionary of passwords, using this function.
+    Encrypt a dictionary of passwords and save to a file.
+    
+    Args:
+        passwords (dictionary): The dictionary of passwords to encrypt, in the
+        form {<user>: <password>...}.
+        key (bytes): The key for encrypting the passwords.
+        crypt_file (str): the filepath to save the encrypted passwords to.
     """
     f = Fernet(key)
     token = f.encrypt(bytes(json.dumps(password_dict), "utf-8"))

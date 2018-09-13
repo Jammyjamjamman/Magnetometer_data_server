@@ -1,5 +1,5 @@
-var rawDatURL = "http://localhost:5000/raw-dat";
-var magDatURL = "http://localhost:5000/mag-dat";
+var rawDatURL = "http://localhost:5000/raw_dat";
+var magDatURL = "http://localhost:5000/mag_dat";
 var sensors = {};
 var mintime = null;
 var maxtime = null;
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
                                                                     return map; }, {});
             Object.keys(sensors).forEach(function(key,index) {
                                                         sensor_select_txt += '<option value=' + key + "><b>" + sensors[key].name + "</b><br>";
-                                                    }); 
+                                                    });
 
             sensor_selection.innerHTML = sensor_select_txt;
             sensor_selection.value = Object.keys(sensors)[0]
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
     };
 
-    xmlhttp.open("GET", "http://localhost:5000/available-sensors", true);
+    xmlhttp.open("GET", "http://localhost:5000/available_sensors", true);
     xmlhttp.send();
 } )
 
@@ -72,7 +72,12 @@ function sensor_select(sensor_id) {
 
 
 function get_start() {
-    if ((startdate.value === null) || (startdate.value == "") || (starttime.value === null) || (starttime.value == "")) {
+    /*
+     * Get the starttime entered by the user and 
+     * convert to a datetime.
+     */
+    if ((startdate.value === null) || (startdate.value == "") ||
+        (starttime.value === null) || (starttime.value == "")) {
         mintime = null;
     }
     else {
@@ -83,7 +88,12 @@ function get_start() {
 
 
 function get_end() {
-    if ((enddate.value === null) || (enddate.value == "") || (endtime.value === null) || (endtime.value == "")) {
+    /*
+     * Get the endtime the user requested and 
+     * convert to a javascript Date().
+     */
+    if ((enddate.value === null) || (enddate.value == "") ||
+        (endtime.value === null) || (endtime.value == "")) {
         maxtime = null;
     }
     else {
@@ -94,6 +104,10 @@ function get_end() {
 
 
 function check_endtime_gr_starttime() {
+    /*
+     * Checks if the endtime selected by the user is greater than the starttime.
+     * If the endtime is less, don't use it in the query.
+     */
     if ((mintime !== null) && (maxtime !== null) && (maxtime <= mintime)) {
         warnings.innerHTML = "Warning: End time not included in query as end time should not be less than start time!";
         maxtime = null;

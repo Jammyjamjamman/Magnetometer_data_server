@@ -5,8 +5,13 @@ mag_data_copy/
 mag_data_exploration/csvs/*
 *access.crypt
 *.run.ipynb
-*frg_single_fgm_input_script.py
-*HAD_input_script.py
+*_input_script.py
 **/__pycache__/
 **/.ipynb_checkpoints/
+*_dat_insert.py
+**/ESK_iaga/
+**/ESK_json/
+**/HAD_iaga/
+**/HAD_json/
+# Include directories which are empty, but may be used as mountpoints.
 !*.include_dir.txt

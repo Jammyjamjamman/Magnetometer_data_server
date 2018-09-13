@@ -12,7 +12,7 @@ import mongo_queries
 from datetime import datetime
 
 app = Flask(__name__)
-cors = CORS(app, resources="/available-sensors")
+cors = CORS(app, resources="/available_sensors")
 
 class InvalidUsage(Exception):
     status_code = 400
@@ -39,28 +39,55 @@ def handle_invalid_usage(error):
 
 @app.route('/')
 def root():
+    """Loads the homepage for a new client connection.
+    
+    Returns:
+        str: The homepage.
+    """
     with open("index.html", 'r') as homepage:
         return homepage
 
 
-@app.route("/available-sensors")
+@app.route("/available_sensors")
 def available_sensors():
+    """Gets the sensors available in the database.
+    Returns:
+        str: the list of sensors available as a json string.
+    """
     return jsonify(list(mongo_queries.get_available_sensors()))
 
 
 def listdict_csv_iter(dict_list):
-    """Convert a list of dicts to a csv, as an iterator."""
+    """Convert a list of dicts to a csv, as an iterator.
+    
+    Args:
+        dict_list (Iter(dict)): An iterable which yields a dictionaries, all
+        with the same keys.
+    
+    Yields:
+        str: A string which represents a line of a csv file.
+    """
+    # Iterate through the list of dictionaries
     for dat in dict_list:
         try:
+            # Generate the next line of the csv
             yield csv_row_fmt.format(**dat)
         except NameError:
+            # Generate the Header and the first line of the csv, if this
+            # does not exist yet.
             yield ",".join(dat.keys()) + '\n'
             csv_row_fmt = "{" + "},{".join(dat.keys()) + "}\n"
             yield csv_row_fmt.format(**dat)
 
 
-@app.route("/mag-dat")
+@app.route("/mag_dat")
 def download_mag_dat():
+    """
+    Download magnetometer data.
+    
+    Returns:
+        Response: A csv containing magnetometer data.
+    """
     # The request is invalid if a user does not provide a sensor ID.
     sensor_id = request.args.get("sensor_id")
     if sensor_id is None:
@@ -75,20 +102,33 @@ def download_mag_dat():
         endtime = None
         
     dat = mongo_queries.get_mag_dat(sensor_id, starttime, endtime)
-    return Response(dat, mimetype='text/csv')
-#    
-#    with open("download_test.zip", "rb") as dl_file:
-#        return send_file(io.BytesIO(dl_file.read()), mimetype="application/zip")
+    return Response(listdict_csv_iter(dat), mimetype='text/csv')
 
-@app.route("/raw-dat")
+
+@app.route("/raw_dat")
 def download_raw_dat():
+    """
+    Download raw data.
+    
+    Returns:
+        Response: A csv containing raw data.
+    """
     # The request is invalid if a user does not provide a sensor ID.
     sensor_id = request.args.get("sensor_id")
     if sensor_id is None:
         raise InvalidUsage("Sensor ID not provided!", status_code=400)
-    starttime = request.args.get("starttime")
-    endtime = request.args.get("endtime")
-    return (str(sensor_id) + starttime + str(endtime))
+    try:
+        starttime = datetime.fromtimestamp(int(request.args.get("starttime")))
+    except TypeError:
+        starttime = None
+    try:
+        endtime = datetime.fromtimestamp(int(request.args.get("endtime")))
+    except TypeError:
+        endtime = None
+        
+    dat = mongo_queries.get_raw_dat(sensor_id, starttime, endtime)
+    return Response(listdict_csv_iter(dat), mimetype='text/csv')
+
 
 if __name__ == "__main__":
     app.run(debug=True)
