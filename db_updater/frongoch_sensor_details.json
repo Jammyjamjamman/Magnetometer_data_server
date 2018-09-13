@@ -1,1 +1,1 @@
-{"sensor_id": "frg_single_fgm3", "name": "Frongoch Farm", "address": "B4572, Aberystwyth SY23 3DG, UK", "UK_grid_ref": "SN6056882610", "latitude": 52.423649, "longitude": -4.0519305, "elevation": 133, "coord_sys": "F", "raw_dat_params": ["time", "reading", "temperature"]}
+{"sensor_id": "frg_single_fgm3", "name": "Frongoch Farm", "address": "B4572, Aberystwyth SY23 3DG, UK", "UK_grid_ref": "SN6056882610", "latitude": 52.423649, "longitude": -4.0519305, "elevation": 133, "coord_sys": "F", "type": "variational", "raw_dat_params": ["time", "reading", "temperature"]}

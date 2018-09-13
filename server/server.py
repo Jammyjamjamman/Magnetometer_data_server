@@ -45,7 +45,7 @@ def root():
         str: The homepage.
     """
     with open("index.html", 'r') as homepage:
-        return homepage
+        return homepage.read()
 
 
 @app.route("/available_sensors")

@@ -50,3 +50,7 @@ Known problems/ TODO:
 * cryptography
 * flask
 * flask-cors
+
+The results presented in this github rely on the data collected at Hartland. We thank the British Geological Survey, for supporting its operation and INTERMAGNET for promoting high standards of magnetic observatory practice (www.intermagnet.org).
+
+The results presented in this github rely on the data collected at Eskdalemuir. We thank the British Geological Survey, for supporting its operation and INTERMAGNET for promoting high standards of magnetic observatory practice (www.intermagnet.org).
