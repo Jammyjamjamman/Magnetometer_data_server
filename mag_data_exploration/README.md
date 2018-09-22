@@ -15,4 +15,4 @@ The processing consisted of 3 stages:
     * Converting the corrected period readings to magnetometer readings (in nT).
     To do this, run the notebook [Magnetometer_Data_Processing](Magnetometer_Data_Processing.ipynb).
     
-3. Getting data to compare, from the Hartland Observatory. This was done by using the [geomag-algorithms](https://github.com/usgs/geomag-algorithms/tree/master/geomagio) repository, provided by USGS. This can be used to retrieve Hartland magnetometer data, which could be compared with the local Frongoch-farm magnetometer data. run the notebook [Getting_HAD_Data](Getting_HAD_Data.ipynb).
+3. Getting data from the Hartland Observatory, to compare the Frongoch Farm data with. The data can be obtained using the [geomag-algorithms](https://github.com/usgs/geomag-algorithms/tree/master/geomagio) python libraries/ repository, provided by USGS. To get this data, run the notebook [Getting_HAD_Data](Getting_HAD_Data.ipynb).
