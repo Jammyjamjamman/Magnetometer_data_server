@@ -14,5 +14,6 @@ mag_data_exploration/csvs/*
 **/HAD_iaga/
 **/HAD_json/
 *.csv
+*.directory
 # Include directories which are empty, but may be used as mountpoints.
 !*.include_dir.txt
