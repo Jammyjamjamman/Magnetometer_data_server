@@ -8,7 +8,7 @@ This code is for my Masters Project for Aberystwyth University.
 ## Retrieving and Visualising Data from Frongoch Magnetometer
 See the code in [client_interface](client_interface).
 
-## Exploring and Processing the Original Frongoch Magnetometer
+## Exploring and Processing the Original Frongoch Magnetometer Data
 See the code in [mag_data_exploration](mag_data_exploration).
 
 ## Setting up a Server with Magnetometer Data from Frongoch and Hartland

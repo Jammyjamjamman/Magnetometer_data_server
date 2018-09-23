@@ -39,7 +39,8 @@ def handle_invalid_usage(error):
 
 @app.route('/')
 def root():
-    """Loads the homepage for a new client connection.
+    """
+    Loads the homepage for a new client connection.
     
     Returns:
         str: The homepage.
@@ -50,7 +51,9 @@ def root():
 
 @app.route("/available_sensors")
 def available_sensors():
-    """Gets the sensors available in the database.
+    """
+    Gets the sensors available in the database.
+    
     Returns:
         str: the list of sensors available as a json string.
     """
