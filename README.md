@@ -1,3 +1,8 @@
+<!--
+The readmes are stored as markdown files, for compatibility with github. 
+It is recommended to read this readme at https://github.com/Jammyjamjamman/Magnetometer_data_server.
+-->
+
 # Magnetometer_data_server
 This repository provides python code and Jupyter notebooks for processing historic magnetometer sensor readings retrieved at Frongoch Farm, Aberystwyth University and for extracting magnetometer readings.
 
@@ -5,13 +10,13 @@ Prototype server code and a jupyter notebook for making the magnetometer data fr
 
 This code is for my Masters Project for Aberystwyth University.
 
-## Retrieving and Visualising Data from Frongoch Magnetometer
+## Visualising Data from Frongoch Magnetometer and other UK Magnetometers, from a server like the one on this github:
 See the code in [client_interface](client_interface).
 
-## Exploring and Processing the Original Frongoch Magnetometer Data
+## Exploring and Processing the Original Frongoch Magnetometer Data:
 See the code in [mag_data_exploration](mag_data_exploration).
 
-## Setting up a Server with Magnetometer Data from Frongoch and Hartland
+## Setting up a Server with Magnetometer Data from Frongoch, Hartland and Eskdalemuir:
 Cloning this repository is recommended for setting up a server. There are 3 steps to setting up the Server:
 1. Setup and start the Mongo database. Instructions: [db_setup](db_setup)
 2. Load data into the database. Instructions: [db_updater](db_updater)
@@ -35,10 +40,12 @@ Known problems/ TODO:
 * pandas
 * jupyter
 * matplotlib
-* geomag-aglorithms
+* io
+* [geomagio](https://github.com/usgs/geomag-algorithms)
 
-### Raw Data Processing
-* PyChange
+### Frongoch Farm Raw Data Analysis and Processing
+
+* [cpDetect](https://github.com/choderalab/cpdetect)
 * [igrf12](https://github.com/scivision/igrf12)
 
 ### Setting up the Database or inserting into Database
