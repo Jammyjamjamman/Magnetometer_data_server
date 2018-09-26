@@ -32,6 +32,9 @@ Known problems/ TODO:
 * Retrieving raw data is very slow.
 
 ## Requirements
+[Anaconda Python 3](https://www.anaconda.com/download/) is recommended to be used with this project. Using a [virtual environment](https://conda.io/docs/user-guide/tasks/manage-environments.html), is strongly recommended when installing rellevant packages.
+
+Requirements:
 ### For Everyone
 * Python (Anaconda Python 3 Recommended)
 * numpy
@@ -57,6 +60,14 @@ Known problems/ TODO:
 * cryptography
 * flask
 * flask-cors
+
+## Using Jupyter Notebooks
+See [Installing the Jupyter Notebook](http://jupyter.org/install.html).
+
+Jupyter notebooks are interactive documents, with embedded code cells. Code cells must be run in order, otherwise python cells will throw an error. This is because python objects may need loading in previous cells, before code in the next cells can execute. The `>>` button, in the top toolbar will restart and run all cells in order.
+
+If you have installed relevant packages using a virtual environment, but the jupyter notebook code claims the packages are missing, check you are using the right python runtime. This is done by going into the top toolbar of the Jupyter notebook, select `kernel`->`change kernel`->`<name of your environment>`.
+
 
 The results presented in this github rely on the data collected at Hartland. We thank the British Geological Survey, for supporting its operation and INTERMAGNET for promoting high standards of magnetic observatory practice (www.intermagnet.org).
 
