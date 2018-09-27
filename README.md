@@ -32,7 +32,7 @@ Known problems/ TODO:
 * Retrieving raw data is very slow.
 
 ## Requirements
-[Anaconda Python 3](https://www.anaconda.com/download/) is recommended to be used with this project. Using a [virtual environment](https://conda.io/docs/user-guide/tasks/manage-environments.html), is strongly recommended when installing rellevant packages.
+[Anaconda Python 3](https://www.anaconda.com/download/) is recommended to be used with this project. A [virtual environment](https://conda.io/docs/user-guide/tasks/manage-environments.html) is strongly recommended, for installing relevant packages.
 
 Requirements:
 ### For Everyone

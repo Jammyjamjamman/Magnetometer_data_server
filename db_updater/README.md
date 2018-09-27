@@ -14,6 +14,8 @@ After adding a sensor to the database, a new script called `XXX_dat_insert.py` w
 
 ### Loading Frongoch Farm magnetometer data.
 
+All the python libraries for processing magnetometer data are required here, except for LMFIT.
+
 Frongoch farm preprocessed and processed sensor data can be added to the database using [Load_Frongoch_Readings_to_DB.ipynb](Load_Frongoch_Readings_to_DB.ipynb). This notebook processes all the Frongoch Farm data, using techniques discovered in [mag_data_exploration](../mag_data_exploration). The data is then loaded to the database using [add_sensor.py](add_sensor.py).
 
 ### Loading Hartland and Eskdalemuir geomagnetic readings to the database.

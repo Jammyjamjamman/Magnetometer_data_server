@@ -12,6 +12,8 @@ import mongo_queries
 from datetime import datetime
 
 app = Flask(__name__)
+# CORS is required for avaiable_sensors, because index.html
+# javascript calls this to retireve sensor information.
 cors = CORS(app, resources="/available_sensors")
 
 class InvalidUsage(Exception):
